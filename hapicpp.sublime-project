@@ -1,0 +1,47 @@
+{
+	"folders":
+	[
+		{
+			"path": "src"
+		}
+	],
+	"build_systems":
+	[
+		{
+			"name": "hapicpp - all",
+			"cmd": ["/usr/bin/make", "-f", "Makefile", "VERBOSE=1", "all"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		},
+		{
+			"name": "hapicpp - clean",
+			"cmd": ["/usr/bin/make", "-f", "Makefile", "VERBOSE=1", "clean"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		},
+		{
+			"name": "hapicpp - edit_cache",
+			"cmd": ["/usr/bin/make", "-f", "Makefile", "VERBOSE=1", "edit_cache"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		},
+		{
+			"name": "hapicpp - rebuild_cache",
+			"cmd": ["/usr/bin/make", "-f", "Makefile", "VERBOSE=1", "rebuild_cache"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		},
+		{
+			"name": "hapicpp - hapicpp",
+			"cmd": ["/usr/bin/make", "-f", "Makefile", "VERBOSE=1", "hapicpp"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		},
+		{
+			"name": "hapicpp - hapicpp/fast",
+			"cmd": ["/usr/bin/make", "-f", "Makefile", "VERBOSE=1", "hapicpp/fast"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+		}
+	]
+	}
