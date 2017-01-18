@@ -1,8 +1,15 @@
 #include "hurriyet.hpp"
-#include <iostream>
 
 bool      Hurriyet::nesneDurumu = false;
 Hurriyet* Hurriyet::nesne       = NULL;
+
+Hurriyet::Hurriyet()
+{
+    RestClient::init();
+
+    baglanti = new RestClient::Connection("https://api.hurriyet.com.tr/");
+    baglanti->FollowRedirects(true);
+}
 
 Hurriyet*
 Hurriyet::nesneyiGetir()
@@ -18,8 +25,33 @@ Hurriyet::nesneyiGetir()
     }
 }
 
-void
+Hurriyet*
+Hurriyet::nesneyiGetir(std::string anahtarMetin)
+{
+    if(!nesneDurumu) {
+        nesne       = new Hurriyet();
+        nesneDurumu = true;
+        return nesne;
+    }
+    else
+    {
+        return nesne;
+    }
+}
+
+std::string
 Hurriyet::deneme()
 {
-    std::cout << "deneme" << std::endl;
+    basliklar[ "accept" ] = "application/json";
+    basliklar[ "apikey" ] = anahtar;
+    baglanti->SetHeaders(basliklar);
+
+    return baglanti->get("/v1/articles").body;
+}
+
+Hurriyet::~Hurriyet()
+{
+    nesneDurumu = false;
+
+    RestClient::disable();
 }

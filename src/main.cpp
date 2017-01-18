@@ -12,51 +12,31 @@
 int
 main()
 {
-    Json::Value   kok;
-    Json::Reader* a;
-
     std::string gecici;
-    std::string anahtar = "";
+
+    Hurriyet* h1;
+    h1 = Hurriyet::nesneyiGetir();
 
     std::ifstream anahtarDosyasi("anahtar.cfg");
     if(anahtarDosyasi.is_open()) {
         while(getline(anahtarDosyasi, gecici)) {
             std::cout << "Anahtar bulundu!" << std::endl;
-            anahtar = gecici;
+            h1->anahtar = gecici;
         }
         anahtarDosyasi.close();
     }
     else
     {
-        std::cout << "Unable to open file";
+        std::cout << "Anahtar dosyasi bulunamadi!";
     }
 
-    RestClient::init();
-
-    RestClient::Connection* conn =
-        new RestClient::Connection("https://api.hurriyet.com.tr/");
-    conn->FollowRedirects(true);
-
-    RestClient::HeaderFields headers;
-    headers[ "accept" ] = "application/json";
-    headers[ "apikey" ] = anahtar;
-    conn->SetHeaders(headers);
-
-    RestClient::Response r  = conn->get("/v1/articles");
-    RestClient::Response r2 = conn->get("/v1/articles/40339699");
-
-    RestClient::disable();
+    Json::Value   kok;
+    Json::Reader* a;
 
     a = new Json::Reader();
-    a->parse(r2.body, kok);
+    a->parse(h1->deneme(), kok);
 
     std::cout << kok << std::endl;
-
-    Hurriyet *h1, *h2;
-    h1 = Hurriyet::nesneyiGetir();
-    h1->deneme();
-    h2 = Hurriyet::nesneyiGetir();
-    h2->deneme();
 
     return 0;
 }
