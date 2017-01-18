@@ -5,9 +5,16 @@
 #include "restclient-cpp/connection.h"
 #include "restclient-cpp/restclient.h"
 
+#include "json/json.h"
+
+#include "hurriyet.hpp"
+
 int
 main()
 {
+    Json::Value   kok;
+    Json::Reader* a;
+
     std::string gecici;
     std::string anahtar = "";
 
@@ -19,14 +26,15 @@ main()
         }
         anahtarDosyasi.close();
     }
-    else {
+    else
+    {
         std::cout << "Unable to open file";
     }
 
     RestClient::init();
 
     RestClient::Connection* conn =
-        new RestClient::Connection("https://api.hurriyet.com.tr/v1/articles");
+        new RestClient::Connection("https://api.hurriyet.com.tr/");
     conn->FollowRedirects(true);
 
     RestClient::HeaderFields headers;
@@ -34,11 +42,21 @@ main()
     headers[ "apikey" ] = anahtar;
     conn->SetHeaders(headers);
 
-    RestClient::Response r = conn->get("/");
+    RestClient::Response r  = conn->get("/v1/articles");
+    RestClient::Response r2 = conn->get("/v1/articles/40339699");
 
     RestClient::disable();
 
-    std::cout << r.body << std::endl;
+    a = new Json::Reader();
+    a->parse(r2.body, kok);
+
+    std::cout << kok << std::endl;
+
+    Hurriyet *h1, *h2;
+    h1 = Hurriyet::nesneyiGetir();
+    h1->deneme();
+    h2 = Hurriyet::nesneyiGetir();
+    h2->deneme();
 
     return 0;
 }
