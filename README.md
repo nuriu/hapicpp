@@ -9,16 +9,22 @@
 
 Yapılacaklar (s1.0);
 
-- [ ] Haberler
+- [ ] Anahtar kontrolleri
 
-- [ ] Köşe Yazıları
+- [ ] Cevap durum kontrolleri
 
-- [ ] Yazarlar
+- [x] Haberler
 
-- [ ] Fotoğraf Galerileri
+- [x] Köşe Yazıları
 
-- [ ] Sayfalar
+- [x] Yazarlar
 
-- [ ] Yollar
+- [x] Fotoğraf Galerileri
 
-- [ ] Aramalar
+- [x] Sayfalar
+
+- [x] Yollar
+
+- [x] Aramalar
+
+- [x] Tarihler

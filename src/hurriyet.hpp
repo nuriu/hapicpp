@@ -11,10 +11,18 @@ class Hurriyet
 {
   public:
     static Hurriyet* nesneyiGetir();
-    static Hurriyet* nesneyiGetir(std::string anahtarMetin);
 
-    std::string              anahtar;
+    /**
+     * @brief      Hürriyet API Anahtarı.
+     */
+    std::string anahtar;
+    /**
+     * @brief      HTTP bağlantısı.
+     */
     RestClient::Connection*  baglanti;
+    /**
+     * @brief      İstek başlıkları.
+     */
     RestClient::HeaderFields basliklar;
 
     std::string haberleriGetir();
