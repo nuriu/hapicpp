@@ -7,9 +7,6 @@ Hurriyet::Hurriyet()
 {
     RestClient::init();
 
-    basliklar[ "accept" ] = "application/json";
-    basliklar[ "apikey" ] = anahtar;
-
     baglanti = new RestClient::Connection("https://api.hurriyet.com.tr/");
     baglanti->FollowRedirects(true);
 }
@@ -45,7 +42,6 @@ Hurriyet::nesneyiGetir(std::string anahtarMetin)
 std::string
 Hurriyet::haberleriGetir()
 {
-    baglanti->SetHeaders(basliklar);
     return baglanti->get("/v1/articles").body;
 }
 
@@ -58,73 +54,73 @@ Hurriyet::haberiGetir(std::string haberKimligi)
 std::string
 Hurriyet::koseYazilariniGetir()
 {
-    return NULL;
+    return baglanti->get("/v1/columns").body;
 }
 
 std::string
 Hurriyet::koseYazisiniGetir(std::string yaziKimligi)
 {
-    return NULL;
+    return baglanti->get("/v1/columns/" + yaziKimligi).body;
 }
 
 std::string
 Hurriyet::tarihleriGetir()
 {
-    return NULL;
+    return baglanti->get("/v1/date").body;
 }
 
 std::string
 Hurriyet::fotografGalerileriniGetir()
 {
-    return NULL;
+    return baglanti->get("/v1/newsphotogalleries").body;
 }
 
 std::string
 Hurriyet::fotografGalerisiniGetir(std::string galeriKimligi)
 {
-    return NULL;
+    return baglanti->get("/v1/newsphotogalleries/" + galeriKimligi).body;
 }
 
 std::string
 Hurriyet::sayfalariGetir()
 {
-    return NULL;
+    return baglanti->get("/v1/pages").body;
 }
 
 std::string
 Hurriyet::sayfayiGetir(std::string sayfaKimligi)
 {
-    return NULL;
+    return baglanti->get("/v1/pages/" + sayfaKimligi).body;
 }
 
 std::string
 Hurriyet::yollariGetir()
 {
-    return NULL;
+    return baglanti->get("/v1/paths").body;
 }
 
 std::string
 Hurriyet::yoluGetir(std::string yolKimligi)
 {
-    return NULL;
+    return baglanti->get("/v1/paths/" + yolKimligi).body;
 }
 
 std::string
 Hurriyet::aramaSonucunuGetir(std::string anahtarKelime)
 {
-    return NULL;
+    return baglanti->get("/v1/search/" + anahtarKelime).body;
 }
 
 std::string
 Hurriyet::yazarlariGetir()
 {
-    return NULL;
+    return baglanti->get("/v1/writers").body;
 }
 
 std::string
 Hurriyet::yazariGetir(std::string yazarKimligi)
 {
-    return NULL;
+    return baglanti->get("/v1/writers/" + yazarKimligi).body;
 }
 
 Hurriyet::~Hurriyet()

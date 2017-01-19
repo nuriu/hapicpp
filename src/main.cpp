@@ -30,15 +30,20 @@ main()
         std::cout << "Anahtar dosyasi bulunamadi!";
     }
 
+    h1->basliklar[ "accept" ] = "application/json";
+    h1->basliklar[ "apikey" ] = h1->anahtar;
+    h1->baglanti->SetHeaders(h1->basliklar);
+
     Json::Value   kok;
     Json::Reader* a;
 
     a = new Json::Reader();
-    a->parse(h1->haberleriGetir(), kok);
+
+    a->parse(h1->yazarlariGetir(), kok);
 
     std::cout << kok << std::endl;
 
-    a->parse(h1->haberiGetir("40199111"), kok);
+    a->parse(h1->yazariGetir("57a8a3430f25441fb419c54a"), kok);
 
     std::cout << kok << std::endl;
 

@@ -53,4 +53,4 @@ class Hurriyet
     Hurriyet();
 };
 
-#endif //_HURRIYET_HPP
+#endif  //_HURRIYET_HPP
