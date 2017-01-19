@@ -85,3 +85,6 @@ anahtar.cfg
 
 # Build file
 hapicpp
+
+# StarUML file
+*.mdj

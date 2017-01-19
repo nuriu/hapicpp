@@ -34,7 +34,7 @@ main()
     Json::Reader* a;
 
     a = new Json::Reader();
-    a->parse(h1->deneme(), kok);
+    a->parse(h1->haberleriGetir(), kok);
 
     std::cout << kok << std::endl;
 
