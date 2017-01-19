@@ -7,6 +7,9 @@ Hurriyet::Hurriyet()
 {
     RestClient::init();
 
+    basliklar[ "accept" ] = "application/json";
+    basliklar[ "apikey" ] = anahtar;
+
     baglanti = new RestClient::Connection("https://api.hurriyet.com.tr/");
     baglanti->FollowRedirects(true);
 }
@@ -42,17 +45,14 @@ Hurriyet::nesneyiGetir(std::string anahtarMetin)
 std::string
 Hurriyet::haberleriGetir()
 {
-    basliklar[ "accept" ] = "application/json";
-    basliklar[ "apikey" ] = anahtar;
     baglanti->SetHeaders(basliklar);
-
     return baglanti->get("/v1/articles").body;
 }
 
 std::string
 Hurriyet::haberiGetir(std::string haberKimligi)
 {
-    return NULL;
+    return baglanti->get("/v1/articles/" + haberKimligi).body;
 }
 
 std::string

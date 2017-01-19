@@ -38,5 +38,9 @@ main()
 
     std::cout << kok << std::endl;
 
+    a->parse(h1->haberiGetir("40199111"), kok);
+
+    std::cout << kok << std::endl;
+
     return 0;
 }
